@@ -12,7 +12,7 @@ class Miso(@Input inBam: File, @Argument species: String, @Argument pairedEnd: B
     required("--genome", species) +
     required("--do-not-submit") + 
     // required("--single-end") +
-    // conditional( pairedEnd, "--paired-end") +
-    // conditional(!pairedEnd, "--single-end") +
+    //conditional( pairedEnd, "--paired-end") +
+    //conditional(!pairedEnd, "--single-end") +
     required("--output-sh", output) + " && sh " + output 
 }

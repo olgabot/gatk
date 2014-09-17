@@ -131,7 +131,7 @@ object TsccUtils {
    if (genome == "hg19") {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode.v17.annotation.gtf.db"
    }else if(genome == "mm9") {
-      retval = "/projects/ps-yeolab/genomes/mm9/Mus_musculus.NCBIM37.64.fixed.gtf.db"
+      retval = "/projects/ps-yeolab/genomes/mm9/gencode.vM1.annotation.gtf.db"
    }
 
    retval
@@ -144,7 +144,7 @@ object TsccUtils {
    if (genome == "hg19") {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode_v17/gencode.v17.annotation.gtf"
    }else if(genome == "mm9") {
-      retval = "/projects/ps-yeolab/genomes/mm9/Mus_musculus.NCBIM37.64.fixed.gtf"
+      retval = "/projects/ps-yeolab/genomes/mm9/gencode.vM1.annotation.gtf"
    }
 
    retval
