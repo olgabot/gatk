@@ -15,7 +15,7 @@ class ParseOldSplice extends CommandLineFunction {
  val make_input:(File)=> String = (x) => x.toString + " " + x.getName.split("""\.""")(0)  
  
  def commandLine = "parse_oldsplice.py " + 
-     		    repeat("--sample", inBam map make_input) + 
+     		    repeat("--sample", inBam map make_input, escape=false) + 
 		    required("--species", in_species) 
 					      			        
  this.isIntermediate = false
