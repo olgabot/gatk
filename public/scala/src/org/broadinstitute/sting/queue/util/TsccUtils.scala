@@ -116,8 +116,7 @@ object TsccUtils {
       retval = "/home/gpratt/clipper/clipper/data/regions/hg19_genes.bed"
    }else if(genome == "mm9") {
       retval = "/home/gpratt/clipper/clipper/data/regions/mm9_genes.bed"
-   }
-   else if(genome == "ce10") {
+   }else if(genome == "ce10") {
       retval = "/home/gpratt/clipper/clipper/data/regions/ce10_genes.bed"
    }
 
@@ -132,6 +131,8 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode.v17.annotation.gtf.db"
    }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/mm9/gencode.vM1.annotation.gtf.db"
+   }else if(genome == "ce10") {
+      retval = "/projects/ps-yeolab/genomes/ce10/WS244.genes.gff3.db"
    }
 
    retval
@@ -145,7 +146,9 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode_v17/gencode.v17.annotation.gtf"
    }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/mm9/gencode.vM1.annotation.gtf"
-   }
+   } else if(genome == "ce10") {
+      retval = "/projects/ps-yeolab/genomes/ce10/WS244.genes.gff3"
+}
 
    retval
   }
@@ -184,6 +187,4 @@ def snpDbLocation(genome: String) : String = {
    }
    retval
   }
-
-
 }
