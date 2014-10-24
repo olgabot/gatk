@@ -19,8 +19,8 @@ import collection.JavaConversions._
 import sys
 
 
-object TsccUtils {
-   genome_directory = sys.env.get("GENOMES")
+object YeowareUtils {
+   var genome_directory = sys.env.get("GENOMES")
 
     def starGenomeLocation(genome: String) : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
