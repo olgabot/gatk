@@ -4,7 +4,7 @@ import org.broadinstitute.sting.commandline._
 import java.io.File
 import org.broadinstitute.sting.queue.function.CommandLineFunction
 
-class Miso(@Input inBam: File, @Argument species: String, @Argument pairedEnd: Boolean, @Output output: File) extends CommandLineFunction {
+class Miso(@Input inBam: File, @Input indexFile: File, @Argument species: String, @Argument pairedEnd: Boolean, @Output output: File) extends CommandLineFunction {
 
   def commandLine = "submit_miso_pipeline.py " +
     required("--bam", inBam) +
