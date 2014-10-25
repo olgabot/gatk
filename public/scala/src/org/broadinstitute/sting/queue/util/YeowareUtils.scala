@@ -16,36 +16,37 @@ package org.broadinstitute.sting.queue.util
 
 import java.io.File
 import collection.JavaConversions._
-import sys
-
 
 object YeowareUtils {
-   var genome_directory = sys.env.get("GENOMES")
 
-    def starGenomeLocation(genome: String) : String = {
-  //Returns star genome Location for TSCC, could eventually be factored out into conf file
-   var retval = "none"
-   if (genome == "hg19") {
-      retval = genome_directory + "/hg19/star_sjdb"
-   }else if(genome == "mm9") {
-      retval = genome_directory + "/mm9/star"
-   }else if(genome == "mm10") {
-      retval = genome_directory + "/mm10/star_sjdb"
-   }else if(genome == "ce10") {
-      retval = genome_directory + "/ce10/star"
-   }else if(genome == "dm3") {
-      retval = genome_directory + "/dm3/star"
+   var genome_directory: String = System.getenv("GENOME")
+
+   def starGenomeLocation(genome: String) : String = {
+       //Returns star genome Location for TSCC, could eventually be factored out into conf file
+       var retval = "none"
+       if (genome == "hg19") {
+          retval = genome_directory + "/hg19/star_sjdb"
+       }else if(genome == "mm9") {
+          retval = genome_directory + "/mm9/star"
+       }else if(genome == "mm10") {
+          retval = genome_directory + "/mm10/star_sjdb"
+       }else if(genome == "ce10") {
+          retval = genome_directory + "/ce10/star"
+       }else if(genome == "dm3") {
+          retval = genome_directory + "/dm3/star"
+       }
+       retval
    }
-   retval
-  }
 
   def SailfishGenomeIndexLocation(genome: String) : String = {
-  // returns sailfish location for TSCC
+   //returns sailfish location for TSCC
+     var retval = "none"
      if (genome == "hg19") {
        retval = genome_directory + "/hg19/sailfish/gencode.v19.pc_lncRNA_transcripts.ercc_fluidigm_spikein.fa_sailfish_index_k31"
      }else if(genome == "mm10") {
        retval = genome_directory + "/mm10/sailfish_fixed/gencode.vM2.pc_lncRNA_transcripts.ercc_fluidigm_spikein.gfp.fa_sailfish_index"
      }
+     retval
   }
 
   def chromSizeLocation(genome: String) : String = {
