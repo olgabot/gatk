@@ -6,8 +6,8 @@ import org.broadinstitute.sting.queue.function.CommandLineFunction
 
 class Miso(@Input inBam: File, @Input indexFile: File, @Argument species: String, @Argument pairedEnd: Boolean, @Output output: File) extends CommandLineFunction {
   override def shortDescription = "miso"
-  this.nCoresRequest(16)
-  var sh_file = swapExt(output, "", ".sh")
+  this.nCoresRequest = Option(16)
+  var sh_file = output + ".sh"
   def commandLine = "submit_miso_pipeline.py " +
     required("--bam", inBam) +
     required("--sample-id", inBam.getName.split("""\.""")(0)) +
