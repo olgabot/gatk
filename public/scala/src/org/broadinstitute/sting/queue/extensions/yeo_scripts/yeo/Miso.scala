@@ -12,7 +12,7 @@ class Miso(@Input inBam: File, @Input indexFile: File, @Argument species: String
     required("--bam", inBam) +
     required("--sample-id", inBam.getName.split("""\.""")(0)) +
     required("--genome", species) +
-    required("--single-end") +
+    // required("--single-end") +
     // conditional( pairedEnd, "--paired-end") +
     // conditional(!pairedEnd, "--single-end") +
     required("--output-sh", sh_file) + " && " +
