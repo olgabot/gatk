@@ -15,6 +15,9 @@ class STAR extends CommandLineFunction {
   
   @Output(doc="output sam file", shortName = "outSam", fullName = "out_sam_file", required = true) 
   var outSam: File = _
+
+  @Output(doc="output fastq file", shortName = "outFastq", fullName = "out_fastq_file", required = false) 
+  var outFastq: File = _
   
   @Argument(doc="genome location", shortName = "genome", fullName = "genome", required = true) 
   var genome: String = _
@@ -38,7 +41,7 @@ class STAR extends CommandLineFunction {
   @Argument(doc="use alpha version of STAR instead of normal version", shortName = "alpha", fullName = "alphaStar", required = false)
   var alpha: Boolean = false
   
-  this.nCoresRequest = Option(16) 
+  this.nCoresRequest = Option(8) 
   var gzip_regex = ".gz$".r
   
   override def shortDescription = "STAR"  
@@ -46,8 +49,8 @@ class STAR extends CommandLineFunction {
   if(alpha) {
    STAR = "~/software/STAR_2.3.1x/STAR "
  }
-      
- def commandLine = STAR +
+
+  def commandLine = STAR +
   required("--runMode", "alignReads") +
   required("--runThreadN", "16") +
   required("--genomeDir", genome) +
@@ -61,7 +64,7 @@ class STAR extends CommandLineFunction {
   required("--outSAMattributes", "All") +  
   conditional(intronMotif, "--outSAMstrandField intronMotif") +
   conditional(gzip_regex.findFirstIn(inFastq.toString()) != None, "--readFilesCommand zcat")+
-  required("--outStd", "BAM") +
+  required("--outStd", "BAM_SortedByCoordinate") +
   required("--outSAMtype", "BAM", "SortedByCoordinate") +
   required("--outFilterType", "BySJout") + 
   required("--outReadsUnmapped", "Fastx") + 
