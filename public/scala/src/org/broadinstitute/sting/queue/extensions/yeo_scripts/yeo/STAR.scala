@@ -62,8 +62,7 @@ class STAR extends CommandLineFunction {
   conditional(intronMotif, "--outSAMstrandField intronMotif") +
   conditional(gzip_regex.findFirstIn(inFastq.toString()) != None, "--readFilesCommand zcat")+
   required("--outStd", "BAM") +
-  required("--outStd", "BAM") +
-  
+  required("--outSAMtype", "BAM", "SortedByCoordinate") +
   required("--outFilterType", "BySJout") + 
   required("--outReadsUnmapped", "Fastx") + 
   required("--outFilterScoreMin", "10") +
