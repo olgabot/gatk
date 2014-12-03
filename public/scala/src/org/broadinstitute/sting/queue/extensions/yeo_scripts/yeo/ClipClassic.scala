@@ -14,6 +14,7 @@ class ClipClassic extends CommandLineFunction {
 
  @Argument(doc="species (hg19, mm9.. ect)", shortName = "species", fullName = "species", required = true)
  var species: String = _
+ this.wallTime = Option((4 * 60 * 60).toLong)
  
   override def shortDescription = "ClipClassic"
   def commandLine = "run_kasey.py " +

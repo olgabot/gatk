@@ -5,6 +5,8 @@ import java.io.File
 import org.broadinstitute.sting.queue.function.CommandLineFunction
 
 class BedToBigBed(@Input inBed: File, @Argument genomeSize: String, @Output outBigBed: File) extends CommandLineFunction {
+  this.wallTime = Option((.5 * 60 * 60).toLong)
+
   override def shortDescription = "bedToBigBed"
   def commandLine = "bedToBigBed %s %s %s -type=bed6+4".format(inBed, genomeSize, outBigBed)
 

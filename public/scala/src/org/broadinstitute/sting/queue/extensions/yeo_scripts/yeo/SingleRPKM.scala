@@ -11,6 +11,7 @@ class SingleRPKM extends CommandLineFunction {
 
  @Output(doc="output RPKM file", shortName = "outRPKM", fullName = "out_rpkm_file", required = true) 
  var outRPKM: File = _
+ this.wallTime = Option((.5 * 60 * 60).toLong)
  
  override def shortDescription = "SingleRPKM" 
  def commandLine = "single_RPKM.py " + 

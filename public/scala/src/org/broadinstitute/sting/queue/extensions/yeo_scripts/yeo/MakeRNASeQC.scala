@@ -11,6 +11,7 @@ class MakeRNASeQC extends CommandLineFunction {
  
  @Output(doc="ouf file", shortName = "f", fullName = "flip", required = true) 
  var out: File = _
+ this.wallTime = Option((.5 * 60 * 60).toLong)
 
  override def shortDescription = "MakeRNASeQC" 
  def commandLine = "make_rnaseqc.py " + 

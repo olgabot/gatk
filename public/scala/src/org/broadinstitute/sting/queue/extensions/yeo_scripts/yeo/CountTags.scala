@@ -19,6 +19,8 @@ class CountTags extends CommandLineFunction {
  var flip: String = _
 
  this.nCoresRequest = Option(16)
+ this.wallTime = Option((2 * 60 * 60).toLong)
+
  override def shortDescription = "count_tags"  
  def commandLine = "count_tags.py " + 
   		    required("--bam_file", inBam) + 

@@ -9,6 +9,8 @@ class ClipAnalysis(@Input inBam: File, @Input inBed: File, @Argument species: St
 		   @Argument phastcons_location: String, @Argument gff_db: String) extends CommandLineFunction {
 
   override def shortDescription = "CLIP_Analysis"
+ this.wallTime = Option((4 * 60 * 60).toLong)
+
   def commandLine = "clip_analysis " +
     required("--clusters", inBed) +
     required("-s", species) +

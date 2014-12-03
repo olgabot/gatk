@@ -13,6 +13,7 @@ class ParseOldSplice extends CommandLineFunction {
  var in_species: String = _
 
  val make_input:(File)=> String = (x) => x.toString + " " + x.getName.split("""\.""")(0)  
+ this.wallTime = Option((.5 * 60 * 60).toLong)
  
  def commandLine = "parse_oldsplice.py " + 
      		    repeat("--sample", inBam map make_input, escape=false) + 

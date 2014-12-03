@@ -25,6 +25,7 @@ class RunRNASeQC extends CommandLineFunction {
  var singleEnd: Boolean = true
  
  override def shortDescription = "RunRNASeQC"
+ this.wallTime = Option((16 * 60 * 60).toLong)
 
  def commandLine = "java -jar /home/yeo-lab/software/rnaseqc/RNA-SeQC_v1.1.7.jar " + 
 		     optional("-gc", gc) +

@@ -26,6 +26,7 @@ class GenomeCoverageBed extends CommandLineFunction {
  override def shortDescription = "GenomeCoverageBed"
 
  
+ this.wallTime = Option((.5 * 60 * 60).toLong)
  
  //This is a huge hack to flip second strand reads to first strand for pe data without effecting the rest of the pipeline
  //need to refactor to take into account bam (se and pe) and bed in a way thats readable 
