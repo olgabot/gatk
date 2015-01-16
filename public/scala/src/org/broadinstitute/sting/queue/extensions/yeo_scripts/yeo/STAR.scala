@@ -41,7 +41,7 @@ class STAR extends CommandLineFunction {
   @Argument(doc="use alpha version of STAR instead of normal version", shortName = "alpha", fullName = "alphaStar", required = false)
   var alpha: Boolean = false
 
-  this.wallTime = Option((4 * 60 * 60).toLong)  
+  this.wallTime = Option((8 * 60 * 60).toLong)  
   this.nCoresRequest = Option(8) 
   var gzip_regex = ".gz$".r
   
