@@ -23,7 +23,7 @@ class Sailfish extends CommandLineFunction {
   var shScript: String = _
 
   @Argument(doc="If provided, then the reads are strand-specific. Otherwise, the reads are assumed to be unstranded.", 
-    shortName = "stranded", fullName = "alphaStar", required = false)
+    shortName = "stranded", fullName = "strand_specific", required = false)
   var stranded: Boolean = false
   
   override def shortDescription = "sailfish"
