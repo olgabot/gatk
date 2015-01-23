@@ -20,6 +20,10 @@ class Sailfish extends CommandLineFunction {
     
   @Argument(doc="sh script to output", shortName = "shScript", fullName = "ash_script", required = false)
   var shScript: String = _
+
+  @Argument(doc="If provided, then the reads are strand-specific. Otherwise, the reads are assumed to be unstranded.", 
+    shortName = "stranded", fullName = "alphaStar", required = false)
+  var stranded: Boolean = false
   
   override def shortDescription = "Run Sailfish k-mer counting based transcript quantification"
   this.nCoresRequest = Option(8)
@@ -27,6 +31,7 @@ class Sailfish extends CommandLineFunction {
   def commandLine = "sailfish_quant.py" +
   required("-1", inFastq) +
   optional("-2", inFastqPair) +
+  conditional(stranded, "--stranded") +
   required("--out-dir", outDir) +
   required("--index", index) +
   required("-n", shScript) +
