@@ -7,9 +7,12 @@ import org.broadinstitute.sting.queue.function.CommandLineFunction
 class Sailfish extends CommandLineFunction {
   
   
-  @Input(doc="input fastq file", shortName = "inFastq", fullName = "input_fastq_file", required = true) 
+  @Input(doc="input fastq file, read1", shortName = "inFastq", fullName = "input_fastq_file", required = true) 
   var inFastq: File = _
     
+  @Input(doc="input fastq file, read 2", shortName = "inFastqPair", fullName = "input_fastq_file", required = false) 
+  var inFastqPair: File = _
+
   @Output(doc="output dir file", shortName = "outDir", fullName = "out_dir_file", required = true) 
   var outDir: File = _
   
