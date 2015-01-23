@@ -37,7 +37,7 @@ object TsccUtils {
    retval
   }
 
-    def SailfishGenomeIndexLocation(genome: String) : String = {
+    def sailfishGenomeIndexLocation(genome: String) : String = {
    //returns sailfish location for TSCC
      var retval = "none"
      if (genome == "hg19") {
