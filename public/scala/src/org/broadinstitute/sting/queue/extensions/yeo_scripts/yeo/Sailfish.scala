@@ -24,7 +24,7 @@ class Sailfish extends CommandLineFunction {
   var stranded: Boolean = false
   
   override def shortDescription = "sailfish"
-  this.nCoresRequest = Option(16)
+  this.nCoresRequest = Option(8)
    
   def commandLine = "sailfish_quant.py" +
   required("-1", inFastq) +
@@ -35,7 +35,7 @@ class Sailfish extends CommandLineFunction {
   required("-n", shScript) +
   required("--out-sh", shScript) +
   required("-i", index) +
-  "-p 16 --do-not-submit && echo $(tail -n 2 " +
+  "-p 8 --do-not-submit && echo $(tail -n 2 " +
   required(shScript) +
   ") | bash"            
 }
