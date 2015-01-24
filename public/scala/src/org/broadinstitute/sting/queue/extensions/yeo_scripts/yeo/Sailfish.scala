@@ -38,7 +38,7 @@ class Sailfish extends CommandLineFunction {
   required("-n", shScript) +
   required("--out-sh", shScript) +
   required("-i", index) +
-  "-p 8 --do-not-submit && echo $(tail -n 2 " +
+  "-p 8 --not-gzipped --do-not-submit && echo $(tail -n 2 " +
   required(shScript) +
   ") | bash"            
 }
