@@ -37,6 +37,18 @@ object TsccUtils {
    retval
   }
 
+  def sailfishGenomeIndexLocation(genome: String) : String = {
+   //returns sailfish location for TSCC
+     var retval = "none"
+     if (genome == "hg19") {
+       retval = genome_directory + "/hg19/sailfish/gencode.v19.pc_lncRNA_transcripts.ercc_fluidigm_spikein.fa_sailfish_index_k31"
+     }else if(genome == "mm10") {
+       retval = genome_directory + "/mm10/sailfish_fixed/gencode.vM2.pc_lncRNA_transcripts.ercc_fluidigm_spikein.gfp.fa_sailfish_index"
+     }
+     retval
+  }
+
+
   def chromSizeLocation(genome: String) : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
 
