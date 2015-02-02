@@ -42,7 +42,7 @@ class STAR extends CommandLineFunction {
   var alpha: Boolean = false
 
   this.wallTime = Option((8 * 60 * 60).toLong)  
-  this.nCoresRequest = Option(8) 
+  this.nCoresRequest = Option(16) 
   var gzip_regex = ".gz$".r
   
   override def shortDescription = "STAR"  
