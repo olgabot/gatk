@@ -19,7 +19,7 @@ class TrimGalore extends CommandLineFunction {
   var outDir: File = _
 
   @Argument(doc="If paired end", shortName="paired", fullName="paired", required=true)
-  var paired: Bool = _
+  var paired: Boolean = _
 
   @Argument(doc = "Stats report for trim_galore", shortName = "report", fullName = "report", required = true)
   var report: String = _
@@ -46,12 +46,13 @@ class TrimGalore extends CommandLineFunction {
   //Option[Int] 
   this.wallTime = Option((8 * 60 * 60).toLong)
 
-  def commandLine = "trim_galore " +
+  def commandLine = "trim_galore --dont_gzip" +
     optional("-e", error_rate) +
     optional("--stringency", stringency) +
     optional("--quality", quality_cutoff) +
     optional("--minimum-length", minimum_length) +
     repeat("--adapter", adapter) +
+    conditional(paired, "--paired")
     conditional(paired, repeat("--adapter2", adapter))
     required("-o", outDir) +
     required(inFastq) + 
