@@ -13,11 +13,7 @@ class TrimGalore extends CommandLineFunction {
   @Input(doc = "input fastq paired file", shortName = "inFastqPair", fullName = "input_fastq_pair_file",
     required = false)
   var inFastqPair: File = _
-
-  @Output(doc = "Output directory for trimmed reads and report", 
-  	shortName = "outDir", fullName = "out dir", required = true)
-  var outDir: File = _
-
+  
   @Argument(doc="If paired end", shortName="paired", fullName="paired", required=true)
   var paired: Boolean = _
 
@@ -54,7 +50,6 @@ class TrimGalore extends CommandLineFunction {
     repeat("--adapter", adapter) +
     conditional(paired, "--paired")
     conditional(paired, repeat("--adapter2", adapter))
-    required("-o", outDir) +
     required(inFastq) + 
     optional(inFastqPair)
   this.isIntermediate = false
