@@ -8,16 +8,30 @@ import org.broadinstitute.sting.queue.function.CommandLineFunction
 class MapRepetitiveRegions extends CommandLineFunction {
   override def shortDescription = "FilterRepetitiveRegions"
 
-  @Input(doc="input fastq file", shortName = "inFastq", fullName = "input_fastq_file", required = true) 
+  @Input(doc="input fastq file", shortName = "inFastq", fullName = "input_fastq_file", 
+    required = true) 
   var inFastq: File = _
-  
-  @Output(doc="Mapped file for reads that got removed", shortName = "outRep", fullName = "out_rep", required = true) 
+
+  @Input(doc="input fastq file paired end read", shortName = "inFastqPair", 
+    fullName = "input_fastq_pair_file", required = true) 
+  var inFastqPair: File = _
+
+  @Argument(doc="Paired-end", shortName="paired", fullName="paired", required=true)
+  var paired: Boolean = _
+
+  @Output(doc="Mapped file for reads that got removed", shortName = "outRepetitive", 
+    fullName = "out_repetitive", required = true) 
   var outRep: File = _
  
-  @Output(doc="fastq file with repetive elements removed", shortName = "outNoRep", fullName = "out_no_rep", required = true) 
-  var outNoRep: File = _
+  @Output(doc="fastq file with repetive elements removed. add '%' sign where the read number goes", 
+    shortName = "outNoRepetitive", fullName = "out_no_repetitive", required = true) 
+  var outNoRepetitive: File = _
+
   this.wallTime = Option((4 * 60 * 60).toLong)
   this.nCoresRequest = Option(16) 
-  def commandLine = "bowtie -S -q -p 16 -e 100 -l 20 --un %s all_ref %s | samtools view -F 4 -Sb - > %s".format(outNoRep, inFastq, outRep)
+  def commandLine = "bowtie2 -q -p 16 -L 20 --local --no-unal --un " + 
+    conditional(paired, "--un-conc " + outNoRepetitive)
+    "%s all_ref %s"
+    " | samtools view -F 4 -Sb - > %s".format(outNoRep, inFastq, outRep)
 
 }
