@@ -23,7 +23,7 @@ class MapRepetitiveRegions extends CommandLineFunction {
     fullName = "out_repetitive", required = true) 
   var outRep: File = _
  
-  @Output(doc="fastq file with repetive elements removed. add '%' sign where the read number goes", 
+  @Output(doc="fastq file with repetive elements removed, with a % for the read number, e.g. sample_A_R%.fastq", 
     shortName = "outNoRepetitive", fullName = "out_no_repetitive", required = true) 
   var outNoRepetitive: File = _
 
