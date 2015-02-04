@@ -31,7 +31,7 @@ class MapRepetitiveRegions extends CommandLineFunction {
   this.nCoresRequest = Option(16) 
   def commandLine = "bowtie2 -q -p 16 -L 20 --local --no-unal --un " + 
     conditional(paired, "--un-conc " + outNoRepetitive)
-    "%s all_ref %s"
+    "%s repbase18.05.all.ref %s"
     " | samtools view -F 4 -Sb - > %s".format(outNoRep, inFastq, outRep)
 
 }
