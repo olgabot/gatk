@@ -5,7 +5,7 @@ import java.io.File
 import org.broadinstitute.sting.commandline._
 import org.broadinstitute.sting.queue.function.CommandLineFunction
 
-class MapRepetitiveRegions extends CommandLineFunction {
+class MapRepetitiveRegions2 extends CommandLineFunction {
   override def shortDescription = "FilterRepetitiveRegions"
 
   @Input(doc="input fastq file", shortName = "inFastq", fullName = "input_fastq_file", 
