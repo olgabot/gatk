@@ -21,7 +21,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
 
   @Output(doc="Mapped file for reads that got removed", shortName = "outRepetitive", 
     fullName = "out_repetitive", required = true) 
-  var outRep: File = _
+  var outRepetititve: File = _
  
   @Output(doc="fastq file with repetive elements removed, with a % for the read number, e.g. sample_A_R%.fastq", 
     shortName = "outNoRepetitive", fullName = "out_no_repetitive", required = true) 
@@ -30,8 +30,10 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   this.wallTime = Option((4 * 60 * 60).toLong)
   this.nCoresRequest = Option(16) 
   def commandLine = "bowtie2 -q -p 16 -L 20 --local --no-unal --un " + 
-    conditional(paired, "--un-conc " + outNoRepetitive)
-    "%s repbase18.05.all.ref %s"
-    " | samtools view -F 4 -Sb - > %s".format(outNoRep, inFastq, outRep)
+    conditional(paired, "--un-conc " + outNoRepetitive) +
+    "-x repbase18.05.all.ref " + 
+    conditional(!paired, "-U %s".format(inFastq)) + 
+    conditional(paired, "-1 %s -2 %s".format(inFastq, inFastqPair) +
+    " | samtools view -F 4 -Sb - > %s".format(outRepetititve)
 
 }
