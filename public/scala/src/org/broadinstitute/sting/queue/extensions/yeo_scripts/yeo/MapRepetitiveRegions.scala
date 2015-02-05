@@ -33,7 +33,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
     conditional(paired, "--un-conc " + outNoRepetitive) +
     "-x repbase18.05.all.ref " + 
     conditional(!paired, "-U %s".format(inFastq)) + 
-    conditional(paired, "-1 %s -2 %s".format(inFastq, inFastqPair) +
+    conditional(paired, "-1 %s -2 %s".format(inFastq, inFastqPair)) +
     " | samtools view -F 4 -Sb - > %s".format(outRepetititve)
 
 }
