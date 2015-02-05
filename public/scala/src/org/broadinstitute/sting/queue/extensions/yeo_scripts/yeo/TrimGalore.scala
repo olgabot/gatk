@@ -17,9 +17,9 @@ class TrimGalore extends CommandLineFunction {
   // @Argument(doc = "Stats report for trim_galore", shortName = "report", fullName = "report", required = true)
   // var report: String = _
 
-  @Argument(doc = "Adapters to trim (-a/--adapater for trim_galore)", shortName = "adapter", 
-  	fullName = "adapter", required = false)
-  var adapter: List[String] = Nil
+  @Argument(doc = "Adapters to trim (-a/--adapater for trim_galore)", shortName = "adapter_list", 
+  	fullName = "adapter_list", required = false)
+  var adapterList: List[String] = Nil
 
   @Argument(doc = "Overlapping minimum (--stringency for trim_galore)", 
   	shortName = "overlap", fullName = "overlap", required = false)
@@ -46,9 +46,9 @@ class TrimGalore extends CommandLineFunction {
     optional("--stringency", stringency) +
     optional("--quality", quality_cutoff) +
     optional("--minimum-length", minimum_length) +
-    repeat("--adapter", adapter) +
+    repeat("--adapter", adapterList) +
     conditional(paired, "--paired")
-    conditional(paired, repeat("--adapter2", adapter))
+    conditional(paired, repeat("--adapter2", adapterList))
     required(inFastq) + 
     optional(inFastqPair)
   this.isIntermediate = false
