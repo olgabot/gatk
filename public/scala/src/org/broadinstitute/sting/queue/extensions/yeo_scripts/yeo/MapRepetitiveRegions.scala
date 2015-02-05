@@ -21,7 +21,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
 
   @Output(doc="Mapped file for reads that got removed", shortName = "outRepetitive", 
     fullName = "out_repetitive", required = true) 
-  var outRepetititve: File = _
+  var outRepetitive: File = _
  
   @Output(doc="fastq file with repetive elements removed, with a % for the read number, e.g. sample_A_R%.fastq", 
     shortName = "outNoRepetitive", fullName = "out_no_repetitive", required = true) 
@@ -34,6 +34,6 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
     "-x repbase18.05.all.ref " + 
     conditional(!paired, "-U %s".format(inFastq)) + 
     conditional(paired, "-1 %s -2 %s".format(inFastq, inFastqPair)) +
-    " | samtools view -F 4 -Sb - > %s".format(outRepetititve)
+    " | samtools view -F 4 -Sb - > %s".format(outRepetitive)
 
 }

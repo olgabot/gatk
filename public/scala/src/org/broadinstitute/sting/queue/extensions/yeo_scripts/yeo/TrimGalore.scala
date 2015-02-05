@@ -17,8 +17,8 @@ class TrimGalore extends CommandLineFunction {
   @Argument(doc="If paired end", shortName="paired", fullName="paired", required=true)
   var paired: Boolean = _
 
-  @Argument(doc = "Stats report for trim_galore", shortName = "report", fullName = "report", required = true)
-  var report: String = _
+  // @Argument(doc = "Stats report for trim_galore", shortName = "report", fullName = "report", required = true)
+  // var report: String = _
 
   @Argument(doc = "Adapters to trim (-a/--adapater for trim_galore)", shortName = "adapter", 
   	fullName = "adapter", required = false)
