@@ -13,9 +13,6 @@ class TrimGalore extends CommandLineFunction {
   @Input(doc = "input fastq paired file", shortName = "inFastqPair", fullName = "input_fastq_pair_file",
     required = false)
   var inFastqPair: File = _
-  
-  @Argument(doc="If paired end", shortName="paired", fullName="paired", required=true)
-  var paired: Boolean = _
 
   // @Argument(doc = "Stats report for trim_galore", shortName = "report", fullName = "report", required = true)
   // var report: String = _
@@ -41,6 +38,8 @@ class TrimGalore extends CommandLineFunction {
   override def shortDescription = "trim_galore"
   //Option[Int] 
   this.wallTime = Option((8 * 60 * 60).toLong)
+
+  var paired = !(inFastqPair == null)
 
   def commandLine = "trim_galore --dont_gzip" +
     optional("-e", error_rate) +
