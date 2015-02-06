@@ -17,8 +17,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   var inFastqPair: File = _
 
   @Input(doc="Dummy input so this gets run after TrimGalore", required=true)
-  var dummy: File = _
-
+  var fakeVariable: File = _
 
   @Argument(doc="Paired-end", shortName="paired", fullName="paired", required=true)
   var paired: Boolean = _

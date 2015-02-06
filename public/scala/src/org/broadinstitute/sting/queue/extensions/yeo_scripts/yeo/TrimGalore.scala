@@ -15,7 +15,7 @@ class TrimGalore extends CommandLineFunction {
   var inFastqPair: File = _
 
   @Output(doc = "Dummy output so this gets run before mapping repetitive regions", required=true)
-  var dummy: File = _
+  var fakeVariable: File = _
 
   // @Argument(doc = "Stats report for trim_galore", shortName = "report", fullName = "report", required = true)
   // var report: String = _
