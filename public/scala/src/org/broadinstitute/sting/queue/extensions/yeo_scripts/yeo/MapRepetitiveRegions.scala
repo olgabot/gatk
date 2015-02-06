@@ -16,6 +16,10 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
     fullName = "input_fastq_pair_file", required = true) 
   var inFastqPair: File = _
 
+  @Input(doc="Dummy input so this gets run after TrimGalore", required=true)
+  var dummy: File = _
+
+
   @Argument(doc="Paired-end", shortName="paired", fullName="paired", required=true)
   var paired: Boolean = _
 
