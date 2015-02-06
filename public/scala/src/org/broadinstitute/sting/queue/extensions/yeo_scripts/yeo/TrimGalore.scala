@@ -48,7 +48,7 @@ class TrimGalore extends CommandLineFunction {
     optional("-e", error_rate) +
     optional("--stringency", stringency) +
     optional("--quality", quality_cutoff) +
-    optional("--minimum-length", minimum_length) +
+    optional("--length", minimum_length) +
     repeat("--adapter", adapterList) +
     conditional(paired, "--paired")
     conditional(paired, repeat("--adapter2", adapterList))
