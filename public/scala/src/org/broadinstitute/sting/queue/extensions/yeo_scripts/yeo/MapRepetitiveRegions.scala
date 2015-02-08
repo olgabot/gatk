@@ -23,13 +23,17 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
     fullName = "out_repetitive", required = true) 
   var outRepetitive: File = _
  
-  @Output(doc="fastq file with repetive elements removed, with a % for the read number, e.g. sample_A_R%.fastq", 
+  @Output(doc="fastq file with repetive elements removed", 
     shortName = "outNoRepetitive", fullName = "out_no_repetitive", required = true) 
   var outNoRepetitive: File = _
+ 
+  @Output(doc="fastq file with repetive elements removed", 
+    shortName = "outNoRepetitivePair", fullName = "out_no_repetitive_pair", required = false) 
+  var outNoRepetitivePair: File = _
 
   var paired = inFastqPair != null
-  if (!paired){
-    outNoRepetitive = outNoRepetitive.replace("%", "1")
+  if (paired){
+    outNoRepetitive = swapExt(outNoRepetitive, ".fastq", ".fastq").replace("1", "%")
   }
 
   this.wallTime = Option((4 * 60 * 60).toLong)
