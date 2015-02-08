@@ -3,7 +3,6 @@ package org.broadinstitute.sting.queue.extensions.yeo
 import org.broadinstitute.sting.commandline.Output
 import java.io.File
 import org.broadinstitute.sting.commandline._
-import org.broadinstitute.sting.queue.extensions.gatk._
 import org.broadinstitute.sting.queue.function.CommandLineFunction
 
 class MapRepetitiveRegions2 extends CommandLineFunction {
@@ -31,11 +30,6 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   @Output(doc="fastq file with repetive elements removed", 
     shortName = "outNoRepetitivePair", fullName = "out_no_repetitive_pair", required = false) 
   var outNoRepetitivePair: File = _
-
-  var paired = inFastqPair != null
-  if (paired){
-    outNoRepetitive = swapExt(outNoRepetitive, ".fastq", ".fastq").replace("1", "%")
-  }
 
   this.wallTime = Option((4 * 60 * 60).toLong)
   this.nCoresRequest = Option(16) 
