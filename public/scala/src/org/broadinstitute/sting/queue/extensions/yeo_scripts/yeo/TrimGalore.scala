@@ -42,7 +42,7 @@ class TrimGalore extends CommandLineFunction {
   //Option[Int] 
   this.wallTime = Option((8 * 60 * 60).toLong)
 
-  var paired = !(inFastqPair == null)
+  var paired = inFastqPair != null
 
   def commandLine = "trim_galore --dont_gzip" +
     optional("-e", error_rate) +
