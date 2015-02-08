@@ -3,6 +3,7 @@ package org.broadinstitute.sting.queue.extensions.yeo
 import org.broadinstitute.sting.commandline.Output
 import java.io.File
 import org.broadinstitute.sting.commandline._
+import org.broadinstitute.sting.queue.extensions.gatk._
 import org.broadinstitute.sting.queue.function.CommandLineFunction
 
 class MapRepetitiveRegions2 extends CommandLineFunction {
