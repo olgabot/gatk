@@ -20,7 +20,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   var fakeVariable: File = _
 
   @Argument(doc="If the input is paired", shortName="paired", fullName="paired", required=false)
-  var paired: File = _
+  var paired: Boolean = _
 
   @Output(doc="Mapped file for reads that got removed", shortName = "outRepetitive", 
     fullName = "out_repetitive", required = true) 
