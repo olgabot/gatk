@@ -17,8 +17,8 @@ class TrimGalore extends CommandLineFunction {
   @Output(doc = "Dummy output so this gets run before mapping repetitive regions", required=true)
   var fakeVariable: File = _
 
-  // @Argument(doc = "Stats report for trim_galore", shortName = "report", fullName = "report", required = true)
-  // var report: String = _
+  @Argument(doc = "If the input is paired-end", shortName = "paired", fullName = "paired", required = true)
+  var paired: Boolean = _
 
   @Argument(doc = "Adapters to trim (-a/--adapater for trim_galore)", shortName = "adapter_list", 
   	fullName = "adapter_list", required = false)
@@ -41,8 +41,6 @@ class TrimGalore extends CommandLineFunction {
   override def shortDescription = "trim_galore"
   //Option[Int] 
   this.wallTime = Option((8 * 60 * 60).toLong)
-
-  var paired = inFastqPair != null
 
   def commandLine = "trim_galore --dont_gzip" +
     optional("-e", error_rate) +

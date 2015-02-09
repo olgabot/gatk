@@ -15,10 +15,12 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   @Input(doc="input fastq file paired end read", shortName = "inFastqPair", 
     fullName = "input_fastq_pair_file", required = true) 
   var inFastqPair: File = _
-  println("inFastqPair: " + inFastqPair.toString())
 
   @Input(doc="Dummy input so this gets run after TrimGalore", required=true)
   var fakeVariable: File = _
+
+  @Argument(doc="If the input is paired", shortName="paired", fullName="paired", required=true)
+  var paired: File = _
 
   @Output(doc="Mapped file for reads that got removed", shortName = "outRepetitive", 
     fullName = "out_repetitive", required = true) 
@@ -31,9 +33,6 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   @Output(doc="fastq file with repetive elements removed", 
     shortName = "outNoRepetitivePair", fullName = "out_no_repetitive_pair", required = false) 
   var outNoRepetitivePair: File = _
-
-  var paired = inFastqPair != null
-  println("paired: "+ paired.toString())
 
   this.wallTime = Option((4 * 60 * 60).toLong)
   this.nCoresRequest = Option(16) 
