@@ -17,7 +17,7 @@ class TrimGalore extends CommandLineFunction {
   @Output(doc = "Dummy output so this gets run before mapping repetitive regions", required=true)
   var fakeVariable: File = _
 
-  @Argument(doc = "If the input is paired-end", shortName = "paired", fullName = "paired", required = true)
+  @Argument(doc = "If the input is paired-end", shortName = "paired", fullName = "paired", required = false)
   var paired: Boolean = _
 
   @Argument(doc = "Adapters to trim (-a/--adapater for trim_galore)", shortName = "adapter_list", 

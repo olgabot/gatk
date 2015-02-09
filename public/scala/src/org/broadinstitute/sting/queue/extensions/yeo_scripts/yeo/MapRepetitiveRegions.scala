@@ -19,7 +19,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   @Input(doc="Dummy input so this gets run after TrimGalore", required=true)
   var fakeVariable: File = _
 
-  @Argument(doc="If the input is paired", shortName="paired", fullName="paired", required=true)
+  @Argument(doc="If the input is paired", shortName="paired", fullName="paired", required=false)
   var paired: File = _
 
   @Output(doc="Mapped file for reads that got removed", shortName = "outRepetitive", 
