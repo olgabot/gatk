@@ -32,7 +32,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   var outNoRepetitivePair: File = _
 
   var paired = inFastqPair != null
-  println("paired: {}".format(paired))
+  println("paired: "+ paired.toString())
 
   this.wallTime = Option((4 * 60 * 60).toLong)
   this.nCoresRequest = Option(16) 
