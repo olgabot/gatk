@@ -48,8 +48,8 @@ class TrimGalore extends CommandLineFunction {
     optional("--quality", quality_cutoff) +
     optional("--length", minimum_length) +
     repeat("--adapter", adapterList) +
-    conditional(paired, "--paired") +
-    conditional(paired, repeat("--adapter2", adapterList)) +
+    conditional(paired, "--paired", escape=false) +
+    conditional(paired, repeat("--adapter2", adapterList, escape=false), escape=false) +
     required(inFastq) + 
     optional(inFastqPair)
   this.isIntermediate = false
