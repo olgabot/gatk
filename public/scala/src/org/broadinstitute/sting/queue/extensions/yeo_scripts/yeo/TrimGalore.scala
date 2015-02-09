@@ -29,7 +29,7 @@ class TrimGalore extends CommandLineFunction {
   var stringency: Int = _
 
   @Argument(doc = "error rate", shortName = "error_rate", fullName = "error_rate", required = false)
-  var error_rate: Float = 0.1
+  var error_rate: Double = 0.1
 
   @Argument(doc = "Minimum read length", shortName = "minimum_length", 
   	fullName = "minimum_length", required = false)
