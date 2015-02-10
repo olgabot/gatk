@@ -37,11 +37,11 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   this.wallTime = Option((4 * 60 * 60).toLong)
   this.nCoresRequest = Option(16) 
   def commandLine = "bowtie2 -q -p 16 -L 20 --local --no-unal " +
-    conditional(paired, " --un " + outNoRepetitive) +
-    conditional(paired, "--un-conc " + outNoRepetitive) +
+    conditional(!paired, " --un " + outNoRepetitive, escape=false) +
+    conditional(paired, "--un-conc " + outNoRepetitive, escape=false) +
     "-x repbase18.05.all.ref " + 
-    conditional(!paired, "-U %s".format(inFastq)) + 
-    conditional(paired, "-1 %s -2 %s".format(inFastq, inFastqPair)) +
+    conditional(!paired, "-U %s".format(inFastq), escape=false) + 
+    conditional(paired, "-1 %s -2 %s".format(inFastq, inFastqPair), escape=false) +
     " | samtools view -F 4 -Sb - > %s".format(outRepetitive)
 
 }
