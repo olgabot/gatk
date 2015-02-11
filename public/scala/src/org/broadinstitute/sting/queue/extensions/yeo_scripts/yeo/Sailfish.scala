@@ -29,7 +29,7 @@ class Sailfish extends CommandLineFunction {
   override def shortDescription = "sailfish"
   this.nCoresRequest = Option(16)
 
-  this.wallTime = Option((4 * 60 * 60).toLong) 
+  this.wallTime = Option((7 * 60 * 60).toLong) 
    
   def commandLine = "sailfish_quant.py" +
   required("-1", inFastq) +
