@@ -13,7 +13,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
   var inFastq: File = _
 
   @Input(doc="input fastq file paired end read", shortName = "inFastqPair", 
-    fullName = "input_fastq_pair_file", required = true) 
+    fullName = "input_fastq_pair_file", required = false) 
   var inFastqPair: File = _
 
   @Input(doc="Dummy input so this gets run after TrimGalore", required=true)
