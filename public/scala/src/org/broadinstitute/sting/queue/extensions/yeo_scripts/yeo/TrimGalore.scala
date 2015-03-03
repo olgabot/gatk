@@ -40,7 +40,7 @@ class TrimGalore extends CommandLineFunction {
 
   override def shortDescription = "trim_galore"
   //Option[Int] 
-  this.wallTime = Option((2 * 60 * 60).toLong)
+  this.wallTime = Option((8 * 60 * 60).toLong)
 
   def commandLine = "trim_galore --dont_gzip" +
     optional("-e", error_rate) +
