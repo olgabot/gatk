@@ -34,7 +34,7 @@ class MapRepetitiveRegions2 extends CommandLineFunction {
     shortName = "outNoRepetitivePair", fullName = "out_no_repetitive_pair", required = false) 
   var outNoRepetitivePair: File = _
 
-  this.wallTime = Option((4 * 60 * 60).toLong)
+  this.wallTime = Option((8 * 60 * 60).toLong)
   this.nCoresRequest = Option(16) 
   def commandLine = "bowtie2 -q -p 16 -L 20 --local --no-unal " +
     conditional(!paired, " --un " + outNoRepetitive, escape=false) +
