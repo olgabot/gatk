@@ -62,7 +62,8 @@ class STAR extends CommandLineFunction {
   required("--outFilterMultimapNmax", multimapNMax) +
   required("--outFilterMultimapScoreRange", outFilterMultimapScoreRange ) +
   required("--outFileNamePrefix", outSam) +
-  required("--outSAMattributes", "All") +  
+  required("--outSAMattributes", "All") +
+  // required("--limitBAMsortRAM", "60000000000") +
   conditional(intronMotif, "--outSAMstrandField intronMotif") +
   conditional(gzip_regex.findFirstIn(inFastq.toString()) != None, "--readFilesCommand zcat")+
   required("--outStd", "BAM_Unsorted") +
