@@ -41,6 +41,9 @@ class STAR extends CommandLineFunction {
   @Argument(doc="use alpha version of STAR instead of normal version", shortName = "alpha", fullName = "alphaStar", required = false)
   var alpha: Boolean = false
 
+  @Argument(doc="map reads in end to end mode", shortName = "endToEnd", fullName = "endToEnd", required = false)
+  var endToEnd: Boolean = false
+
   this.wallTime = Option((16 * 60 * 60).toLong)  
   this.nCoresRequest = Option(16) 
   var gzip_regex = ".gz$".r
@@ -72,6 +75,7 @@ class STAR extends CommandLineFunction {
   required("--outReadsUnmapped", "Fastx") + 
   required("--outFilterScoreMin", "10") +
   required("--outSAMattrRGline", "ID:foo") +
+  conditional(endToEnd, "--alignEndsType EndToEnd") +   
   "> " + outSam
 		
  //this.isIntermediate = true
