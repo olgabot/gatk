@@ -64,6 +64,7 @@ class Cutadapt extends CommandLineFunction {
   this.wallTime = Option((16 * 60 * 60).toLong)
 
   def commandLine = "cutadapt -f fastq" + 
+  required("--match-read-wildcards") + 
   required("--times", times) + 
   optional("-e", error_rate) + 
   optional("-O", overlap) + 
