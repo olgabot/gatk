@@ -45,7 +45,7 @@ class STAR extends CommandLineFunction {
   var endToEnd: Boolean = false
 
   this.wallTime = Option((16 * 60 * 60).toLong)  
-  this.nCoresRequest = Option(16) 
+  this.nCoresRequest = Option(8) 
   var gzip_regex = ".gz$".r
   
   override def shortDescription = "STAR"  

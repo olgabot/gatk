@@ -25,7 +25,7 @@ class Clipper extends CommandLineFunction {
   var reverse_strand: Boolean = false
 
   override def shortDescription = "clipper"
-  this.nCoresRequest = Option(16)
+  this.nCoresRequest = Option(8)
   this.wallTime = Option((4 * 60 * 60).toLong)
   def commandLine = "clipper " +
     required("-b", inBam) +
