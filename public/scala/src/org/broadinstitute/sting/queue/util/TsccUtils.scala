@@ -37,6 +37,23 @@ object TsccUtils {
    retval
   }
 
+
+  def repBaseGenomeLocation(genome: String) : String = {
+    //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    
+    var retval = "none"
+    if (genome == "hg19") {
+      retval = "/projects/ps-yeolab/genomes/RepBase18.05.fasta/species_specic/homo_sapiens_repbase"
+    }else if(genome == "mm9") {
+      retval = "/projects/ps-yeolab/genomes/RepBase18.05.fasta/species_specic/mus_musculus_repbase"
+    }else if(genome == "mm10") {
+      retval = "/projects/ps-yeolab/genomes/RepBase18.05.fasta/species_specic/mus_musculus_repbase"
+    }else {
+      retval = "/projects/ps-yeolab/genomes/RepBase18.05.fasta/STAR_fixed/"
+    }
+    retval
+  }
+  
   def sailfishGenomeIndexLocation(genome: String) : String = {
    //returns sailfish location for TSCC
      var retval = "none"
