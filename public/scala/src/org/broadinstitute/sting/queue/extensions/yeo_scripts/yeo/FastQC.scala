@@ -8,14 +8,15 @@ class FastQC extends CommandLineFunction {
   @Input(doc="input fastq file", shortName = "inFastq", fullName = "in_fastq", required = true)
   var inFastq: File = _
   
-
   @Argument(doc="outDir", shortName = "outDir", fullName = "out_dir", required = false)
   var outDir: String = null
-  
+
   @Output(doc="dummyOut", shortName = "dummyOut", fullName = "dummy_out", required = false)
   var dummyOut: File = null
-
-
+  
+  override def shortDescription = "FastQC"
+  this.wallTime = Option((.5 * 60 * 60).toLong)
+  
   def swapExt(file: File, oldExtension: String, newExtension: String) =
     new File(file.getName.stripSuffix(oldExtension) + newExtension)
   
@@ -28,20 +29,14 @@ class FastQC extends CommandLineFunction {
       dummyOut = new File(outDir, newFile.getName + ".dummy_fastqc")
     }
   }
+  
+  
 
-  override def shortDescription = "FastQC"
-  this.wallTime = Option((2 * 60 * 60).toLong)
-  
-  var out = outDir
-  if (out == null) {
-    out = "`cwd`"
-  }
- 
-  
   def commandLine = "fastqc" +
   required(inFastq) + 
-  required("-o", out) + 
+  optional("-o", outDir) +
+  conditional(outDir == null, "-o `cwd`") +
   " > " + dummyOut
   
-  
+  println(commandLine)
 }
