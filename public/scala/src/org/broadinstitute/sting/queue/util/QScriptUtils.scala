@@ -63,23 +63,25 @@ object QScriptUtils {
   }
 
 
-  def createArgsFromFile(in: File) : List[Tuple6[File, String, String, String, String, String]] = {
-    var list: List[Tuple6[File, String, String, String, String, String]] = Nil
+  def createArgsFromFile(in: File) : List[Tuple7[File, String, String, String, String, String, String]] = {
+    var list: List[Tuple7[File, String, String, String, String, String, String]] = Nil
     for (file <- fromFile(in).getLines()) {
       if (!file.startsWith("#") && !file.isEmpty ) { 
         var arrayInfo = file.trim().split("\t")
-	if(arrayInfo.size == 6) {
-           list :+= Tuple6(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), arrayInfo(3), arrayInfo(4), arrayInfo(5))
+	if(arrayInfo.size == 7) {
+           list :+= Tuple7(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), arrayInfo(3), arrayInfo(4), arrayInfo(5), arrayInfo(6))
+	} else if(arrayInfo.size == 6) {
+           list :+= Tuple7(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), arrayInfo(3), arrayInfo(4), arrayInfo(5), "null")
 	} else if(arrayInfo.size == 5) {
-           list :+= Tuple6(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), arrayInfo(3), arrayInfo(4), "null")
+           list :+= Tuple7(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), arrayInfo(3), arrayInfo(4), "null", "null")
 	} else if(arrayInfo.size == 4) {
-           list :+= Tuple6(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), arrayInfo(3), "null", "null")
+           list :+= Tuple7(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), arrayInfo(3), "null", "null", "null")
 	} else if(arrayInfo.size == 3) {
-           list :+= Tuple6(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), "null", "null", "null")
+           list :+= Tuple7(new File(arrayInfo(0)), arrayInfo(1), arrayInfo(2), "null", "null", "null",  "null")
 	} else if(arrayInfo.size == 2) {
-	   list :+= Tuple6(new File(arrayInfo(0)), arrayInfo(1), "null", "null", "null", "null")
+	   list :+= Tuple7(new File(arrayInfo(0)), arrayInfo(1), "null", "null", "null", "null",  "null")
 	} else {
-	   list :+= Tuple6(new File(arrayInfo(0)), "null", "null", "null", "null", "null")
+	   list :+= Tuple7(new File(arrayInfo(0)), "null", "null", "null", "null", "null", "null")
 	}
       }
     }

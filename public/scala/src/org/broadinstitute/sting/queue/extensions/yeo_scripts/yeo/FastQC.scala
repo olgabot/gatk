@@ -37,6 +37,5 @@ class FastQC extends CommandLineFunction {
   optional("-o", outDir) +
   conditional(outDir == null, "-o `cwd`") +
   " > " + dummyOut
-  
-  println(commandLine)
+ 
 }

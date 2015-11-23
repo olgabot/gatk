@@ -31,8 +31,12 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/mm10/star_sjdb"
    }else if(genome == "ce10") {
       retval = "/projects/ps-yeolab/genomes/ce10/star"
+   }else if(genome == "ce10_flag") {
+     retval = "/projects/ps-yeolab/genomes/ce10/ce10_genome_adr-1_flag_adjusted_heather_hundley/"
    }else if(genome == "dm3") {
       retval = "/projects/ps-yeolab/genomes/dm3/star"
+   }else if(genome == "S288C_R64") {
+     retval = "/projects/ps-yeolab/genomes/S288C_R64/star_sjdb"
    }
    retval
   }
@@ -80,7 +84,9 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/ce10/ce10.chrom.sizes"
    }else if(genome == "dm3") {
       retval = "/projects/ps-yeolab/genomes/dm3/dm3.chrom.sizes"
-   }
+   }else if(genome == "S288C_R64") {
+     retval = "/projects/ps-yeolab/genomes/S288C_R64/sacCer3.chrom.sizes"
+ }
 
    retval
   }
@@ -122,7 +128,9 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/mm9/chromosomes/all.fa"
    }else if(genome == "dm3") {
       retval = "/projects/ps-yeolab/genomes/dm3/chromosomes/all.fa"
-   }
+   }else if(genome == "S288C_R64") {
+     retval = "/projects/ps-yeolab/genomes/S288C_R64/S288C_reference_genome_R64-2-1_20150113/S288C_reference_sequence_R64-2-1_20150113.fsa"
+   } 
    retval
   }
 
