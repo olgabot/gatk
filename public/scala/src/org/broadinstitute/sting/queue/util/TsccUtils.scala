@@ -37,6 +37,8 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/dm3/star"
    }else if(genome == "S288C_R64") {
      retval = "/projects/ps-yeolab/genomes/S288C_R64/star_sjdb"
+   }else if(genome == "zbf") {
+     retval = "/projects/ps-yeolab/genomes/zbf_grcz10/star_index"
    }
    retval
   }
