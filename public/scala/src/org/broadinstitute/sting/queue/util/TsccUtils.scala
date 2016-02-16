@@ -39,6 +39,12 @@ object TsccUtils {
      retval = "/projects/ps-yeolab/genomes/S288C_R64/star_sjdb"
    }else if(genome == "zbf") {
      retval = "/projects/ps-yeolab/genomes/zbf_grcz10/star_index"
+   }else if(genome == "hg19_spikein") {
+     retval = "/projects/ps-yeolab/genomes/hg19/star_index_ath_spikeins"
+   }else if(genome == "mm10_spikein") {
+     retval = "/projects/ps-yeolab/genomes/mm10/star_index_ath_spikeins/"
+   } else if(genome == "ecoli_rel605") {
+     retval = "/projects/ps-yeolab/genomes/ecoli_rel606/star"
    }
    retval
   }
@@ -79,15 +85,21 @@ object TsccUtils {
 
    var retval = "none"
    if (genome == "hg19") {
-      retval = "/projects/ps-yeolab/genomes/hg19/hg19.chrom.sizes"
+     retval = "/projects/ps-yeolab/genomes/hg19/hg19.chrom.sizes"
    }else if(genome == "mm9") {
-      retval = "/projects/ps-yeolab/genomes/mm9/mm9.chrom.sizes"
+     retval = "/projects/ps-yeolab/genomes/mm9/mm9.chrom.sizes"
+   }else if(genome =="mm10") {
+     retval = "/projects/ps-yeolab/genomes/mm10/mm10.chrom.sizes"
    }else if(genome == "ce10") {
-      retval = "/projects/ps-yeolab/genomes/ce10/ce10.chrom.sizes"
+     retval = "/projects/ps-yeolab/genomes/ce10/ce10.chrom.sizes"
    }else if(genome == "dm3") {
-      retval = "/projects/ps-yeolab/genomes/dm3/dm3.chrom.sizes"
+     retval = "/projects/ps-yeolab/genomes/dm3/dm3.chrom.sizes"
    }else if(genome == "S288C_R64") {
      retval = "/projects/ps-yeolab/genomes/S288C_R64/sacCer3.chrom.sizes"
+   }else if(genome == "hg19_spikein") {
+     retval = "/projects/ps-yeolab/genomes/hg19/star_index_ath_spikeins/chrNameLength.txt"
+   }else if(genome == "mm10_spikein") {
+     retval = "/projects/ps-yeolab/genomes/mm10/star_index_ath_spikeins/chrNameLength.txt"
  }
 
    retval
@@ -119,7 +131,6 @@ object TsccUtils {
    retval
   }
 
-
   def genomeLocation(genome: String) : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
 
@@ -128,6 +139,8 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/hg19/chromosomes/all.fa"
    }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/mm9/chromosomes/all.fa"
+   }else if(genome == "mm10") {
+     retval = "/projects/ps-yeolab/genomes/mm10/chromosomes/all.fa"
    }else if(genome == "dm3") {
       retval = "/projects/ps-yeolab/genomes/dm3/chromosomes/all.fa"
    }else if(genome == "S288C_R64") {
@@ -172,6 +185,8 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode.v17.annotation.gtf.db"
    }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/mm9/gencode.vM1.annotation.gtf.db"
+   }else if(genome == "mm10") {
+     retval = "/projects/ps-yeolab/genomes/mm10/gencode/gencode.vM3.annotation.gtf.db"
    }else if(genome == "ce10") {
       retval = "/projects/ps-yeolab/genomes/ce10/WS244.genes.gff3.db"
    }
@@ -187,6 +202,8 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode_v17/gencode.v17.annotation.gtf"
    }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/mm9/gencode.vM1.annotation.gtf"
+   }else if(genome == "mm10") {
+     retval = "/projects/ps-yeolab/genomes/mm10/gencode/gencode.vM3.annotation.gtf"
    } else if(genome == "ce10") {
       retval = "/projects/ps-yeolab/genomes/ce10/WS244.genes.gff3"
 }
@@ -196,7 +213,6 @@ object TsccUtils {
 
   def exonLocation(genome: String) : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
-
    var retval = "none"
    if (genome == "hg19") {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode_v17/gencode.v17.annotation.exons.bed"
