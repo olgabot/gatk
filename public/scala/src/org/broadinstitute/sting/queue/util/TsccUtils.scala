@@ -43,7 +43,7 @@ object TsccUtils {
      retval = "/projects/ps-yeolab/genomes/hg19/star_index_ath_spikeins"
    }else if(genome == "mm10_spikein") {
      retval = "/projects/ps-yeolab/genomes/mm10/star_index_ath_spikeins/"
-   } else if(genome == "ecoli_rel605") {
+   } else if(genome == "ecoli_rel606") {
      retval = "/projects/ps-yeolab/genomes/ecoli_rel606/star"
    }
    retval
