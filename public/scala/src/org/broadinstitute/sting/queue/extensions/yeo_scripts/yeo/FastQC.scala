@@ -15,7 +15,7 @@ class FastQC extends CommandLineFunction {
   var dummyOut: File = null
   
   override def shortDescription = "FastQC"
-  this.wallTime = Option((1 * 60 * 60).toLong)
+  this.wallTime = Option((1.5 * 60 * 60).toLong)
   
   def swapExt(file: File, oldExtension: String, newExtension: String) =
     new File(file.getName.stripSuffix(oldExtension) + newExtension)

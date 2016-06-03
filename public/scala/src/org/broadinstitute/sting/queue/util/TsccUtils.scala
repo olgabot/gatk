@@ -19,42 +19,57 @@ import collection.JavaConversions._
 
 object TsccUtils {
 
-    def starGenomeLocation(genome: String) : String = {
-  //Returns star genome Location for TSCC, could eventually be factored out into conf file
-
-   var retval = "none"
-   if (genome == "hg19") {
-      retval = "/projects/ps-yeolab/genomes/hg19/star_sjdb"
-   }else if(genome == "mm9") {
-      retval = "/projects/ps-yeolab/genomes/mm9/star"
-   }else if(genome == "mm10") {
-      retval = "/projects/ps-yeolab/genomes/mm10/star_sjdb"
-   }else if(genome == "ce10") {
-      retval = "/projects/ps-yeolab/genomes/ce10/star"
-   }else if(genome == "ce10_flag") {
-     retval = "/projects/ps-yeolab/genomes/ce10/ce10_genome_adr-1_flag_adjusted_heather_hundley/"
-   }else if(genome == "dm3") {
-      retval = "/projects/ps-yeolab/genomes/dm3/star"
-   }else if(genome == "S288C_R64") {
-     retval = "/projects/ps-yeolab/genomes/S288C_R64/star_sjdb"
-   }else if(genome == "zbf") {
-     retval = "/projects/ps-yeolab/genomes/zbf_grcz10/star_index"
-   }else if(genome == "hg19_spikein") {
-     retval = "/projects/ps-yeolab/genomes/hg19/star_index_ath_spikeins"
-   }else if(genome == "mm10_spikein") {
-     retval = "/projects/ps-yeolab/genomes/mm10/star_index_ath_spikeins/"
-   } else if(genome == "ecoli_rel606") {
-     retval = "/projects/ps-yeolab/genomes/ecoli_rel606/star"
-   }
-   retval
-  }
-
-
-  def repBaseGenomeLocation(genome: String) : String = {
+  def starGenomeLocation(genome: String, path: String = "") : String = {
     //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    
+    if (!path.isEmpty()) {
+      return path
+    }
     
     var retval = "none"
     if (genome == "hg19") {
+      retval = "/projects/ps-yeolab/genomes/hg19/star_sjdb"
+    }else if(genome == "mm9") {
+      retval = "/projects/ps-yeolab/genomes/mm9/star"
+    }else if(genome == "mm10") {
+      retval = "/projects/ps-yeolab/genomes/mm10/star_sjdb"
+    }else if(genome == "ce10") {
+      retval = "/projects/ps-yeolab/genomes/ce10/star"
+    }else if(genome == "ce10_flag") {
+      retval = "/projects/ps-yeolab/genomes/ce10/ce10_genome_adr-1_flag_adjusted_heather_hundley/"
+    }else if(genome == "dm3") {
+      retval = "/projects/ps-yeolab/genomes/dm3/star"
+    }else if(genome == "S288C_R64") {
+      retval = "/projects/ps-yeolab/genomes/S288C_R64/star_sjdb"
+    }else if(genome == "zbf") {
+      retval = "/projects/ps-yeolab/genomes/zbf_grcz10/star_index"
+    }else if(genome == "hg19_spikein") {
+      retval = "/projects/ps-yeolab/genomes/hg19/star_index_ath_spikeins"
+    }else if(genome == "mm10_spikein") {
+      retval = "/projects/ps-yeolab/genomes/mm10/star_index_ath_spikeins/"
+    } else if(genome == "ecoli_rel606") {
+      retval = "/projects/ps-yeolab/genomes/ecoli_rel606/star"
+    } else if(genome == "hg19_cel_spikein") {
+      retval = "/projects/ps-yeolab/genomes/hg19/star_index_cel_39_spikein"
+    } else if(genome == "hg19_hcmv") {
+      retval = "/projects/ps-yeolab/genomes/combined_hg19_hcmv"
+    } else if(genome == "GRCh38") { 
+      retval = "/projects/ps-yeolab/genomes/GRCh38/star"
+    }
+    retval
+  }
+
+
+  def repBaseGenomeLocation(genome: String, path: String = "") : String = {
+    //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    if (!path.isEmpty()) {
+      return path
+    }
+
+    var retval = "none"
+    if (genome == "hg19") {
+      retval = "/projects/ps-yeolab/genomes/RepBase18.05.fasta/species_specic/homo_sapiens_repbase"
+    }else if (genome == "GRCh38") {
       retval = "/projects/ps-yeolab/genomes/RepBase18.05.fasta/species_specic/homo_sapiens_repbase"
     }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/RepBase18.05.fasta/species_specic/mus_musculus_repbase"
@@ -66,9 +81,13 @@ object TsccUtils {
     retval
   }
   
-  def sailfishGenomeIndexLocation(genome: String) : String = {
+  def sailfishGenomeIndexLocation(genome: String, path: String = "") : String = {
    //returns sailfish location for TSCC
-     var retval = "none"
+    if (!path.isEmpty()) {
+      return path
+    }
+ 
+    var retval = "none"
      if (genome == "hg19") {
        retval = "/projects/ps-yeolab/genomes/hg19/sailfish/gencode.v19.pc_lncRNA_transcripts.ercc_fluidigm_spikein.fa_sailfish_index_k31"
      }else if(genome == "mm10") {
@@ -80,8 +99,12 @@ object TsccUtils {
   }
 
 
-  def chromSizeLocation(genome: String) : String = {
+  def chromSizeLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -100,13 +123,20 @@ object TsccUtils {
      retval = "/projects/ps-yeolab/genomes/hg19/star_index_ath_spikeins/chrNameLength.txt"
    }else if(genome == "mm10_spikein") {
      retval = "/projects/ps-yeolab/genomes/mm10/star_index_ath_spikeins/chrNameLength.txt"
- }
-
+   } else if (genome == "hg19_hcmv") {
+     retval = "/projects/ps-yeolab/genomes/combined_hg19_hcmv/chrNameLength.txt"
+   } else if (genome == "GRCh38") {
+     retval = "/projects/ps-yeolab/genomes/GRCh38/star/chrNameLength.txt"
+   }
    retval
   }
 
-  def regionsLocation(genome: String) : String = {
+  def regionsLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -118,8 +148,11 @@ object TsccUtils {
    retval
   }
 
-  def asStructureLocation(genome: String) : String = {
+  def asStructureLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -131,8 +164,12 @@ object TsccUtils {
    retval
   }
 
-  def genomeLocation(genome: String) : String = {
+  def genomeLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -145,25 +182,35 @@ object TsccUtils {
       retval = "/projects/ps-yeolab/genomes/dm3/chromosomes/all.fa"
    }else if(genome == "S288C_R64") {
      retval = "/projects/ps-yeolab/genomes/S288C_R64/S288C_reference_genome_R64-2-1_20150113/S288C_reference_sequence_R64-2-1_20150113.fsa"
+   }else if(genome == "GRCh38") {
+     retval = "/projects/ps-yeolab/genomes/GRCh38/chromosomes/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta"
    } 
    retval
   }
 
-  def phastconsLocation(genome: String) : String = {
+  def phastconsLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
       retval = "/projects/ps-yeolab/genomes/hg19/hg19_phastcons.bw"
    }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/mm9/mm9_phastcons.bw"
+   }else if(genome == "mm9") {
+     retval = "/projects/ps-yeolab/genomes/GRCh38/hg38.phastCons20way.bw"
    }
 
    retval
   }
 
-  def genicRegionsLocation(genome: String) : String = {
+  def genicRegionsLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -172,13 +219,18 @@ object TsccUtils {
       retval = "/home/gpratt/clipper/clipper/data/regions/mm9_genes.bed"
    }else if(genome == "ce10") {
       retval = "/home/gpratt/clipper/clipper/data/regions/ce10_genes.bed"
+   }else if(genome == "GRCh38") {
+     retval = "/home/gpratt/clipper/clipper/data/regions/GRCh38_v24_genes.bed"
    }
 
    retval
   }
 
-  def gffDbLocation(genome: String) : String = {
+  def gffDbLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -189,13 +241,18 @@ object TsccUtils {
      retval = "/projects/ps-yeolab/genomes/mm10/gencode/gencode.vM3.annotation.gtf.db"
    }else if(genome == "ce10") {
       retval = "/projects/ps-yeolab/genomes/ce10/WS244.genes.gff3.db"
+   }else if(genome == "GRCh38") {
+      retval = "/projects/ps-yeolab/genomes/GRCh38/gencode.v24.primary_assembly.annotation.gtf.db"
    }
 
    retval
   }
 
-  def gffLocation(genome: String) : String = {
+  def gffLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+    if (!path.isEmpty()) {
+      return path
+    }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -206,27 +263,41 @@ object TsccUtils {
      retval = "/projects/ps-yeolab/genomes/mm10/gencode/gencode.vM3.annotation.gtf"
    } else if(genome == "ce10") {
       retval = "/projects/ps-yeolab/genomes/ce10/WS244.genes.gff3"
-}
+   }else if(genome == "GRCh38") {
+     retval = "/projects/ps-yeolab/genomes/GRCh38/gencode.v24.primary_assembly.annotation.gtf"
+   }
+
 
    retval
   }
 
-  def exonLocation(genome: String) : String = {
+  def exonLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
-   var retval = "none"
+    
+    if (!path.isEmpty()) {
+      return path
+    }
+
+    var retval = "none"
    if (genome == "hg19") {
       retval = "/projects/ps-yeolab/genomes/hg19/gencode_v17/gencode.v17.annotation.exons.bed"
    }else if(genome == "mm9") {
       retval = "/projects/ps-yeolab/genomes/mm9/Mus_musculus.NCBIM37.64.fixed.exons.bed"
    }else if(genome == "ce10") {
       retval = "/projects/ps-yeolab/genomes/ce10/ce10.exons.BED"
+   }else if(genome == "GRCh38") {
+     retval = "/home/gpratt/clipper/clipper/data/regions/GRCh38_v24_exons.bed"
    }
 
    retval
   }
 
-def gcLocation(genome: String) : String = {
+def gcLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
+
+  if (!path.isEmpty()) {
+    return path
+  }
 
    var retval = "none"
    if (genome == "hg19") {
@@ -235,9 +306,13 @@ def gcLocation(genome: String) : String = {
    retval
   }
 
-def snpDbLocation(genome: String) : String = {
+def snpDbLocation(genome: String, path: String = "") : String = {
   //Returns star genome Location for TSCC, could eventually be factored out into conf file
 
+  if (!path.isEmpty()) {
+    return path
+  }
+  
    var retval = "none"
    if (genome == "hg19") {
       retval = "/projects/ps-yeolab/genomes/hg19/snp137.txt.gz"
