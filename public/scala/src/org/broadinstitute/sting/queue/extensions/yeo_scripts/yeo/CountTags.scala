@@ -18,7 +18,7 @@ class CountTags extends CommandLineFunction {
  @Argument(doc="flip the strands", shortName = "f", fullName = "flip", required = false) 
  var flip: String = _
 
- this.nCoresRequest = Option(16)
+ this.nCoresRequest = Option(8)
  this.wallTime = Option((2 * 60 * 60).toLong)
 
  override def shortDescription = "count_tags"  

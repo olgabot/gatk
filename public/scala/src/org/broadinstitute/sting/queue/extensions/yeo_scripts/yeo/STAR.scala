@@ -41,7 +41,10 @@ class STAR extends CommandLineFunction {
   @Argument(doc="use alpha version of STAR instead of normal version", shortName = "alpha", fullName = "alphaStar", required = false)
   var alpha: Boolean = false
 
-  this.wallTime = Option((8 * 60 * 60).toLong)  
+  @Argument(doc="map reads in end to end mode", shortName = "endToEnd", fullName = "endToEnd", required = false)
+  var endToEnd: Boolean = false
+
+  this.wallTime = Option((16 * 60 * 60).toLong)  
   this.nCoresRequest = Option(8) 
   var gzip_regex = ".gz$".r
   
@@ -62,14 +65,17 @@ class STAR extends CommandLineFunction {
   required("--outFilterMultimapNmax", multimapNMax) +
   required("--outFilterMultimapScoreRange", outFilterMultimapScoreRange ) +
   required("--outFileNamePrefix", outSam) +
-  required("--outSAMattributes", "All") +  
+  required("--outSAMattributes", "All") +
+  // required("--limitBAMsortRAM", "60000000000") +
   conditional(intronMotif, "--outSAMstrandField intronMotif") +
   conditional(gzip_regex.findFirstIn(inFastq.toString()) != None, "--readFilesCommand zcat")+
-  required("--outStd", "BAM_SortedByCoordinate") +
-  required("--outSAMtype", "BAM", "SortedByCoordinate") +
+  required("--outStd", "BAM_Unsorted") +
+  required("--outSAMtype", "BAM", "Unsorted") +
   required("--outFilterType", "BySJout") + 
   required("--outReadsUnmapped", "Fastx") + 
   required("--outFilterScoreMin", "10") +
+  required("--outSAMattrRGline", "ID:foo") +
+  conditional(endToEnd, "--alignEndsType EndToEnd") +   
   "> " + outSam
 		
  //this.isIntermediate = true
